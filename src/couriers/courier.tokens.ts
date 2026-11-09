@@ -1,0 +1,1 @@
+export const COURIER_ADAPTERS = Symbol('COURIER_ADAPTERS');
