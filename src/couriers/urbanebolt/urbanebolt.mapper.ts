@@ -84,7 +84,7 @@ export class UrbaneBoltMapper {
 
     const successItems = this.asRecords(root.successResponse);
     const successfulItem = this.findOrderResult(successItems, request.orderId);
-    const candidates = [successfulItem, this.asRecord(root.data), root].filter(//question
+    const candidates = [successfulItem, this.asRecord(root.data), root].filter(
       (item): item is JsonRecord => item !== undefined,
     );
     const awbNumber = this.firstString(candidates, [

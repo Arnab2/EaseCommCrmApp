@@ -8,7 +8,7 @@ import { CourierHttpClient } from './courier-http.client';
     HttpModule.registerAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: (config: ConfigService) => ({//question
+      useFactory: (config: ConfigService) => ({
         timeout: config.get<number>('courierHttp.timeoutMs', 10000),
         headers: {
           'Content-Type': 'application/json',

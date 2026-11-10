@@ -127,16 +127,16 @@ export class UrbaneBoltAdapter implements CourierAdapter {
     request: AxiosRequestConfig,
     retryable: boolean,
   ): Promise<T> {
-    const rejectedToken = await this.auth.getAccessToken();//why name rejectedtoken
+    const accessToken = await this.auth.getAccessToken();
     try {
-      return await this.send<T>(request, rejectedToken, retryable);
+      return await this.send<T>(request, accessToken, retryable);
     } catch (error) {
       if (!(error instanceof CourierApiError) || error.statusCode !== 401) {
         throw error;
       }
 
       const refreshedToken =
-        await this.auth.refreshAfterUnauthorized(rejectedToken);
+        await this.auth.refreshAfterUnauthorized(accessToken);
       return this.send<T>(request, refreshedToken, retryable);
     }
   }
