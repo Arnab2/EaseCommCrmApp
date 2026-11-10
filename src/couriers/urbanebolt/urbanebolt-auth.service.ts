@@ -17,7 +17,7 @@ interface CachedToken {
 
 @Injectable()
 export class UrbaneBoltAuthService {
-  private cachedToken?: CachedToken;// Question can we use redis cache?
+  private cachedToken?: CachedToken;
   private refreshPromise?: Promise<CachedToken>;
   private readonly baseUrl: string;
   private readonly username: string;
